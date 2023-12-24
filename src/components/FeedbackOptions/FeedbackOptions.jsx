@@ -2,16 +2,25 @@ import React from 'react';
 
 
 const FeedbackOptions = ({
-    options = {},
-    onLeaveFeedback = {}
+    options,
+    onLeaveFeedback
     }) => {
+    console.log(options)
+    const optionKeys = Object.keys(options);
     return (
         <form>
-            <button type="button" onClick={onLeaveFeedback} name='good'>Good</button>
-            <button type="button" onClick={onLeaveFeedback} name='neutral'>Neutral</button>
-            <button type="button" onClick={onLeaveFeedback} name='bad'>Bad</button>
+            {optionKeys.map(option => (
+                <button key={option} type="button" onClick ={onLeaveFeedback} name={option}>{option}</button>
+            ))}
         </form>
     );
     };
 
 export { FeedbackOptions };
+
+
+            // {options.map(option => (
+            //     <button key={option} type="button" onClick={() => onLeaveFeedback(option)}>
+            //         {option}
+            //     </button>
+            // ))}
